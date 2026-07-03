@@ -1,3 +1,44 @@
 spring:
   application:
     name: redis
+
+  datasource:
+    url: jdbc:mysql://mysql:3306/mydb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Ho_Chi_Minh
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  data:
+    redis:
+      host: redis
+      port: 6379
+      timeout: 60000
+
+  jackson:
+    time-zone: Asia/Ho_Chi_Minh
+
+server:
+  port: 8080
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+    display-request-duration: true
+    doc-expansion: none
+
+logging:
+  level:
+    org.springframework.data.redis: INFO
+    org.hibernate.SQL: DEBUG
